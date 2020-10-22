@@ -9,6 +9,7 @@ using UnityEditor.Build.Reporting;
 // ------------------------------------------------------------------------
 // https://docs.unity3d.com/Manual/CommandLineArguments.html
 // ------------------------------------------------------------------------
+
 public class JenkinsBuild {
  
   static string[] EnabledScenes = FindEnabledEditorScenes();
@@ -16,6 +17,7 @@ public class JenkinsBuild {
   // ------------------------------------------------------------------------
   // called from Jenkins
   // ------------------------------------------------------------------------
+  [MenuItem("Build/Mac")]
   public static void BuildMacOS(){
  
     string appName = "AppName";
@@ -35,6 +37,7 @@ public class JenkinsBuild {
           i += 3;
         }
         else {
+        	System.Console.WriteLine(args[i] + " || " + args[i+1] + " || "+ args[i+2] + " || " + args[i+3]);
           System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildMacOS <app name> <output dir>");
           return;
         }
